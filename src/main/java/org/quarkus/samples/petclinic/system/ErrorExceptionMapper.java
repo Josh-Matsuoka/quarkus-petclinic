@@ -5,6 +5,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
+@Provider
 public class ErrorExceptionMapper implements ExceptionMapper<Exception> {
 
     @Inject
@@ -12,7 +13,12 @@ public class ErrorExceptionMapper implements ExceptionMapper<Exception> {
 
     @Override
     public Response toResponse(Exception exception) {
-        return Response.ok(templates.error(exception.getMessage())).build();
+        try {
+            throw exception;
+        } catch(Exception e) {
+            return Response.ok(templates.error(exception.getMessage())).build();
+        }
     }
+
     
 }
