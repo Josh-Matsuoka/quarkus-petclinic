@@ -1,4 +1,4 @@
-MAVEN_S2I_ARTIFACT_DIRS=target/quarkus-app target/classes
+MAVEN_S2I_ARTIFACT_DIRS=target/quarkus-app,target/classes
 S2I_SOURCE_DEPLOYMENTS_FILTER=app lib quarkus quarkus-run.jar all-events.jfc
 JAVA_OPTIONS=-Dquarkus.http.host=0.0.0.0 -XX:StartFlightRecording=dumponexit=true,settings=all-events.jfc -Dcom.sun.management.jmxremote.port=9096 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false
 AB_JOLOKIA_OFF=true
